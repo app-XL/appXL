@@ -1,6 +1,7 @@
 angular.module('userprofileDirective', [])
 .controller('userprofileDirectiveControllerMain', ['$scope', '$http', '$mdDialog', '$mdMedia','Upload','growl','API', function($scope, $http, $mdDialog, $mdMedia,Upload,growl,API) {
 
+  // user and userEmail rest api constant
   var userApiEndPoint = API.baseUrl + API.usersEndPoint;
   var userEmailApiEndPoint = API.baseUrl + API.usersEmailEndPoint;
     

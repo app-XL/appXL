@@ -18,8 +18,11 @@ profileApp.service('multipartForm', ['$http', function($http){
 
 profileApp.controller('profileControllerMain', ['$scope', '$http', 'growl', '$rootScope', 'Upload', '$timeout','$mdDialog','$mdMedia','API',
   function($scope, $http, growl, $rootScope, Upload, $timeout,$mdDialog,$mdMedia,API) { 
-      //acts as get user profile by id for logged in user
+      
+      // users rest api constant
       var userApiEndPoint = API.baseUrl + API.usersEndPoint;
+
+      //acts as get user profile by id for logged in user
       var refresh = function(id) {
       id=$rootScope.user._id;
       $http.get(userApiEndPoint + id).success(function(response) {
@@ -36,7 +39,9 @@ profileApp.controller('profileControllerMain', ['$scope', '$http', 'growl', '$ro
 profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','$routeParams','Upload', '$timeout','$mdDialog','$mdMedia',
   function($scope, $http, growl,$routeParams, Upload, $timeout,$mdDialog,$mdMedia) { 
       
+      // users rest api constant
       var userApiEndPoint = API.baseUrl + API.usersEndPoint;
+      
       $scope.profileId = $routeParams.id;
       //acts as get user profile by id
       var refresh = function(id) {

@@ -1,6 +1,7 @@
 angular.module('userAutoDirective', [])
 .controller('userAutoDirectiveControllerMain', ['$scope', '$http', '$timeout','API', function($scope, $http, $timeout,API) {
 
+  // users and usersEmail rest api constants
   var userApiEndPoint = API.baseUrl + API.usersEndPoint;
   var userEmailApiEndPoint = API.baseUrl + API.usersEmailEndPoint;
 

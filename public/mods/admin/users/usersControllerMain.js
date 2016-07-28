@@ -7,8 +7,11 @@ usersApp.controller('usersControllerMain', ['$scope', '$http', '$routeParams','$
     $scope.hideFilter = true;
     $scope.hideAddRow = true;
     $scope.action = "none";
+
+    // users and groups rest api constants
     var userApiEndPoint = API.baseUrl + API.usersEndPoint;
     var groupApiEndPoint = API.baseUrl + API.groupsEndPoint;
+    
     //fetching all the user details by calling refresh function
     var refresh = function() {
       $http.get(userApiEndPoint).success(function(response) {

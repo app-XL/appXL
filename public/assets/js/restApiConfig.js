@@ -1,5 +1,5 @@
 'use strict';
-
+//defining rest API constants in AppXL
 angular.module('restApiConfig', [])
 
 .constant('API', {

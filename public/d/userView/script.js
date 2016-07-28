@@ -1,6 +1,7 @@
 angular.module('userViewDirective', [])
 .controller('userViewDirectiveControllerMain', ['$scope', '$http','API', function($scope, $http, API) {
 
+  // user rest api constant
   var userApiEndPoint = API.baseUrl + API.usersEndPoint;
 
   if($scope.userModel === undefined || $scope.userModel === "")

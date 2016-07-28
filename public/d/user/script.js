@@ -1,6 +1,7 @@
 angular.module('userDirective', [])
 .controller('userDirectiveControllerMain', ['$scope', '$http','API', function($scope, $http, API) {
 
+  // users and usersEmail rest api constants
   var userApiEndPoint = API.baseUrl + API.usersEndPoint;
   var userEmailApiEndPoint = API.baseUrl + API.usersEmailEndPoint;
 
