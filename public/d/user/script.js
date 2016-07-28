@@ -1,5 +1,9 @@
 angular.module('userDirective', [])
-.controller('userDirectiveControllerMain', ['$scope', '$http', function($scope, $http) {
+.controller('userDirectiveControllerMain', ['$scope', '$http','API', function($scope, $http, API) {
+
+  // users and usersEmail rest api constants
+  var userApiEndPoint = API.baseUrl + API.usersEndPoint;
+  var userEmailApiEndPoint = API.baseUrl + API.usersEmailEndPoint;
 
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
@@ -9,11 +13,11 @@ angular.module('userDirective', [])
   $scope.getUser = function(){
     var url= "";
     if($scope.userId!="" && $scope.userId!=undefined){
-      url='/api/v1/secure/admin/users/' + $scope.userId;
+      url=userApiEndPoint + $scope.userId;
     }
     
     if ($scope.userEmail!="" && $scope.userEmail!=undefined) {
-      url='/api/v1/secure/admin/users/email/' + $scope.userEmail;
+      url=userEmailApiEndPoint + $scope.userEmail;
     }
 
     $http.get(url).success(function(response) {

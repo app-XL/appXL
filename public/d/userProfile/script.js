@@ -1,5 +1,10 @@
 angular.module('userprofileDirective', [])
-.controller('userprofileDirectiveControllerMain', ['$scope', '$http', '$mdDialog', '$mdMedia','Upload','growl', function($scope, $http, $mdDialog, $mdMedia,Upload,growl) {
+.controller('userprofileDirectiveControllerMain', ['$scope', '$http', '$mdDialog', '$mdMedia','Upload','growl','API', function($scope, $http, $mdDialog, $mdMedia,Upload,growl,API) {
+
+  // user and userEmail rest api constant
+  var userApiEndPoint = API.baseUrl + API.usersEndPoint;
+  var userEmailApiEndPoint = API.baseUrl + API.usersEmailEndPoint;
+    
   $scope.entity = "entity";
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
@@ -13,7 +18,7 @@ angular.module('userprofileDirective', [])
     //if both the email and id are given find the user by id only
     if($scope.userEmail || $scope.userId)
     {
-      $http.get('/api/v1/secure/admin/users/' + $scope.userId).success(function(response) {
+      $http.get(userApiEndPoint + $scope.userId).success(function(response) {
         $scope.userModel = response;
         $scope.showFlag = "user";
       })
@@ -21,7 +26,7 @@ angular.module('userprofileDirective', [])
       //if user email is not given then get user by id
       if($scope.userId)
       {
-        $http.get('/api/v1/secure/admin/users/' + $scope.userId).success(function(response) {
+        $http.get(userApiEndPoint + $scope.userId).success(function(response) {
           $scope.userModel = response;
           $scope.showFlag = "user";
         })
@@ -39,7 +44,7 @@ angular.module('userprofileDirective', [])
       //if user id is not given then get user by email
       if($scope.userEmail)
       {
-        $http.get('/api/v1/secure/admin/users/email/' + $scope.userEmail).success(function(response) {
+        $http.get(userEmailApiEndPoint + $scope.userEmail).success(function(response) {
           $scope.userModel = response;
           $scope.showFlag = "user";
         })
@@ -73,7 +78,7 @@ angular.module('userprofileDirective', [])
     console.log(user);
     console.log(id);
     var userid = id;
-    $http.put('/api/v1/secure/admin/users/'+ id, user).success(function(response) {
+    $http.put(userApiEndPoint + id, user).success(function(response) {
 
       growl.info(parse("Profile for user [%s]<br/>Edited successfully", userid));
     });
@@ -94,7 +99,7 @@ angular.module('userprofileDirective', [])
       var imagepath = '/'+ filepath.replace(/\\/g , "/");
       users.avatar = imagepath;
       console.log(users.avatar);
-      $http.put('/api/v1/secure/admin/users/'+ users._id, users).success(function(response1) {
+      $http.put(userApiEndPoint + users._id, users).success(function(response1) {
         $mdDialog.hide();
       });
 

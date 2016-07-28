@@ -1,7 +1,7 @@
 module.exports = {
 	assetMap : {
 		"general" : ["app-css"],
-		"angular" : ["utils","filters-web","dir-web"],
+		"angular" : ["utils","filters-web","dir-web","restApiConfig"],
 		"index": ["index"],
 		"login": [],
 		"home": ["home"],
