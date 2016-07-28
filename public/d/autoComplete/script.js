@@ -1,5 +1,8 @@
 angular.module('userAutoDirective', [])
-.controller('userAutoDirectiveControllerMain', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+.controller('userAutoDirectiveControllerMain', ['$scope', '$http', '$timeout','API', function($scope, $http, $timeout,API) {
+
+  var userApiEndPoint = API.baseUrl + API.usersEndPoint;
+  var userEmailApiEndPoint = API.baseUrl + API.usersEmailEndPoint;
 
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
@@ -9,17 +12,17 @@ angular.module('userAutoDirective', [])
   $scope.getUser = function(){
     var url= "";
     if($scope.userId!="" && $scope.userId!=undefined){
-      url='/api/v1/secure/admin/users/' + $scope.userId;
+      url=userApiEndPoint + $scope.userId;
     }
     
     if ($scope.userEmail!="" && $scope.userEmail!=undefined) {
-      url='/api/v1/secure/admin/users/email/' + $scope.userEmail.toLowerCase();
+      url=userEmailApiEndPoint + $scope.userEmail.toLowerCase();
     }
 
     if($scope.switchMode == 'add' && ($scope.moduleType == 'sessions' || $scope.moduleType == 'keynotes'))
     {
       if ($scope.userEmail == "") {
-        url='/api/v1/secure/admin/users/email/' + $scope.userEmail.toLowerCase();
+        url=userEmailApiEndPoint + $scope.userEmail.toLowerCase();
         $scope.userEmail = undefined;
         $scope.userId = undefined;
       }
@@ -27,11 +30,11 @@ angular.module('userAutoDirective', [])
     if($scope.switchMode == 'edit' && ($scope.moduleType == 'sessions'))
     {
       if ($scope.userEmail =="" && $scope.userId!=null) {
-        url='/api/v1/secure/admin/users/' + $scope.userId;
+        url=userApiEndPoint + $scope.userId;
       }
 
       if ($scope.userEmail =="" && $scope.notNull!="") {
-        url='/api/v1/secure/admin/users/email/' + $scope.userEmail.toLowerCase();
+        url=userEmailApiEndPoint + $scope.userEmail.toLowerCase();
         $scope.userEmail = undefined;
         $scope.userId = undefined;
       }
@@ -64,17 +67,17 @@ angular.module('userAutoDirective', [])
     $scope.userEmail = $scope.userEmail1;
     var url= "";
     if($scope.userId!="" && $scope.userId!=undefined){
-      url='/api/v1/secure/admin/users/' + $scope.userId;
+      url=userApiEndPoint + $scope.userId;
     }
     
     if ($scope.userEmail!="" && $scope.userEmail!=undefined) {
-      url='/api/v1/secure/admin/users/email/' + $scope.userEmail.toLowerCase();
+      url=userEmailApiEndPoint + $scope.userEmail.toLowerCase();
     }
 
     if($scope.switchMode == 'add' && ($scope.moduleType == 'sessions' || $scope.moduleType == 'keynotes'))
     {
       if ($scope.userEmail == "") {
-        url='/api/v1/secure/admin/users/email/' + $scope.userEmail.toLowerCase();
+        url=userEmailApiEndPoint + $scope.userEmail.toLowerCase();
         $scope.userEmail = undefined;
         $scope.userId = undefined;
       }
@@ -82,11 +85,11 @@ angular.module('userAutoDirective', [])
     if($scope.switchMode == 'edit' && ($scope.moduleType == 'sessions'))
     {
       if ($scope.userEmail =="" && $scope.userId!=null) {
-        url='/api/v1/secure/admin/users/' + $scope.userId1;
+        url=userApiEndPoint + $scope.userId1;
       }
 
       if ($scope.userEmail =="" && $scope.notNull!="") {
-        url='/api/v1/secure/admin/users/email/' + $scope.userEmail.toLowerCase();
+        url=userEmailApiEndPoint + $scope.userEmail.toLowerCase();
         $scope.userEmail = undefined;
         $scope.userId = undefined;
       }

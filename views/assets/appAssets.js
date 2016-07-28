@@ -145,7 +145,13 @@ module.exports = {
 			"/public/d/geoLocation/locator-tpl.js"
 		]
 
-	}
+	},
+
+	"restApiConfig":{
+		"dev":[
+		"/public/assets/js/restApiConfig.js"
+		]
+	}	
 
 	}
 

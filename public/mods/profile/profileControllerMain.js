@@ -16,12 +16,13 @@ profileApp.service('multipartForm', ['$http', function($http){
 }]);
 
 
-profileApp.controller('profileControllerMain', ['$scope', '$http', 'growl', '$rootScope', 'Upload', '$timeout','$mdDialog','$mdMedia',
-  function($scope, $http, growl, $rootScope, Upload, $timeout,$mdDialog,$mdMedia) { 
+profileApp.controller('profileControllerMain', ['$scope', '$http', 'growl', '$rootScope', 'Upload', '$timeout','$mdDialog','$mdMedia','API',
+  function($scope, $http, growl, $rootScope, Upload, $timeout,$mdDialog,$mdMedia,API) { 
       //acts as get user profile by id for logged in user
+      var userApiEndPoint = API.baseUrl + API.usersEndPoint;
       var refresh = function(id) {
       id=$rootScope.user._id;
-      $http.get('/api/v1/secure/admin/users/'+id).success(function(response) {
+      $http.get(userApiEndPoint + id).success(function(response) {
       $scope.user = response;  
       $scope.email = $scope.user.email;
       $scope.facebooktoken = '';
@@ -34,12 +35,13 @@ profileApp.controller('profileControllerMain', ['$scope', '$http', 'growl', '$ro
 
 profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','$routeParams','Upload', '$timeout','$mdDialog','$mdMedia',
   function($scope, $http, growl,$routeParams, Upload, $timeout,$mdDialog,$mdMedia) { 
-     
+      
+      var userApiEndPoint = API.baseUrl + API.usersEndPoint;
       $scope.profileId = $routeParams.id;
       //acts as get user profile by id
       var refresh = function(id) {
       id=$scope.profileId;
-      $http.get('/api/v1/secure/admin/users/'+id).success(function(response) {
+      $http.get(userApiEndPoint + id).success(function(response) {
       $scope.userdata = response;  
       $scope.email = $scope.userdata.email;
       $scope.facebooktoken = '';
@@ -59,7 +61,7 @@ profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','
                 $scope.result = response.data;
                 $scope.user.avatar=response.data.file.path;   
                 $rootScope.cropdataurl=response.data.file.path;             
-                $http.post('/api/v1/secure/admin/users/',$scope.user).success(function(response1) {
+                $http.post(userApiEndPoint,$scope.user).success(function(response1) {
                 });
            });
       };
@@ -76,7 +78,7 @@ profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','
                 var filepath = response.data.file.path;
                 var imagepath = '/'+ filepath.replace(/\\/g , "/");
                 usersdata.avatar = imagepath;
-                $http.put('/api/v1/secure/admin/users/'+ usersdata._id, usersdata).success(function(response1) {
+                $http.put(userApiEndPoint + usersdata._id, usersdata).success(function(response1) {
                   $mdDialog.hide();
                 });
            });
@@ -85,7 +87,7 @@ profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','
       
       //edit the profile data user by taking user id.
       $scope.editprofile = function (userdata,id) {         
-          $http.put('/api/v1/secure/admin/users/'+ id, $scope.userdata).success(function(response) {
+          $http.put(userApiEndPoint + id, $scope.userdata).success(function(response) {
                 growl.info(parse("Profile for user [%s]<br/>Edited successfully", id));
           });
       };  

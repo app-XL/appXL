@@ -1,7 +1,9 @@
 
 
 angular.module('userdisplayDirective', [])
-.controller('userdisplayDirectiveControllerMain', ['$scope', '$http', function($scope, $http) {
+.controller('userdisplayDirectiveControllerMain', ['$scope', '$http','API', function($scope, $http, API) {
+
+  var userApiEndPoint = API.baseUrl + API.usersEndPoint;
 
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
@@ -14,7 +16,7 @@ angular.module('userdisplayDirective', [])
       return;
     }
 
-    $http.get('/api/v1/secure/admin/users/' + $scope.userId).success(function(response) {
+    $http.get(userApiEndPoint + $scope.userId).success(function(response) {
       $scope.userModel = response;
       $scope.userId = response._id;
       $scope.showFlag = "user";

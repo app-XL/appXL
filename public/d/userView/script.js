@@ -1,5 +1,7 @@
 angular.module('userViewDirective', [])
-.controller('userViewDirectiveControllerMain', ['$scope', '$http', function($scope, $http) {
+.controller('userViewDirectiveControllerMain', ['$scope', '$http','API', function($scope, $http, API) {
+
+  var userApiEndPoint = API.baseUrl + API.usersEndPoint;
 
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
@@ -14,7 +16,7 @@ angular.module('userViewDirective', [])
 
     if($scope.userId!="" && $scope.userId!=undefined){
 
-      url='/api/v1/secure/admin/users/' + $scope.userId;
+      url=userApiEndPoint + $scope.userId;
           $http.get(url).success(function(response) {
       $scope.userModel = response;
       $scope.userId = response._id;
