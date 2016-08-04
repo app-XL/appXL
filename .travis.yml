@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "6"
+  - "6.1"
+
+# whitelist
+branches:
+  only:
+    - master
+
+# services: # enable various services
+#   - mongodb     # will start mongodb
+
+# install:
+#   - npm install -g bower
+#   - npm install
+#   - bower install
+
+# script: npm start
