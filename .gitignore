@@ -13,6 +13,7 @@ results
 
 public/libs
 public/uploads/profilePics
+/coverage
 
 npm-debug.log
 node_modules
