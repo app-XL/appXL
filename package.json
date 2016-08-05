@@ -5,7 +5,9 @@
   "private": true,
   "siteTitle": "App-XLrater",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/jasmine/bin/jasmine.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "dependencies": {
     "express": "~4.0.0",
@@ -17,7 +19,7 @@
     "passport-local": "~0.1.6",
     "passport-facebook": "~1.0.2",
     "passport-twitter": "~1.0.2",
-    "passport-google-oauth": "~0.1.5", 
+    "passport-google-oauth": "~0.1.5",
     "connect-flash": "~0.1.1",
     "bcrypt-nodejs": "latest",
     "q": "1.4.1",
@@ -42,10 +44,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.12",
-    "istanbul": "^0.4.4"
-  },
-  "scripts": {
-    "test": "./node_modules/istanbul/lib/cli.js",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "istanbul": "^0.4.4",
+    "jasmine": "^2.4.1"
   }
 }

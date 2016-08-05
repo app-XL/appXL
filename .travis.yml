@@ -1,22 +1,21 @@
 language: node_js
-os:
-  - unix
 node_js:
   - "6"
   - "6.1"
-after_success: 'npm run coveralls'
+
+  install:
+    - npm install -g bower
+    - npm install
+    - bower install
 
 # whitelist
 branches:
   only:
     - master
-
+    after_success: 'npm run coveralls'
 # services: # enable various services
 #   - mongodb     # will start mongodb
 
-# install:
-#   - npm install -g bower
-#   - npm install
-#   - bower install
+
 
 # script: npm start
