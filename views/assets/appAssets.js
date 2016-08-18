@@ -1,8 +1,8 @@
 module.exports = {
 
- assets : {
-	"app-css": {
-		"dev":[
+	assets : {
+		"app-css": {
+			"dev":[
 			"/public/assets/w/styles/layout.css",
 			"/public/assets/w/styles/pagestyles.css",
 			"/public/assets/w/styles/materialform.css",
@@ -14,8 +14,8 @@ module.exports = {
 			"/public/assets/m/css/font.css",
 			"/public/assets/w/styles/tooltip.css",
 			"/public/assets/w/styles/angucomplete-alt.css"
-		],
-		"prod":[
+			],
+			"prod":[
 			"/public/assets/w/styles/layout.min.css",
 			"/public/assets/w/styles/pagestyles.min.css",
 			"/public/assets/w/styles/materialform.min.css",
@@ -23,55 +23,55 @@ module.exports = {
 			"/public/assets/w/styles/dataview-panels.min.css",
 			"/public/assets/w/styles/userpicker.min.css",
 
-			"/public/assets/g/css/sidebar.css",
-			"/public/assets/m/css/font.css",
-			"/public/assets/w/styles/tooltip.css",
-			"/public/assets/w/styles/angucomplete-alt.css"
-		]
-	},
+			"/public/assets/g/css/sidebar.min.css",
+			"/public/assets/m/css/font.min.css",
+			"/public/assets/w/styles/tooltip.min.css",
+			"/public/assets/w/styles/angucomplete-alt.min.css"
+			]
+		},
 
-	"utils":{
-		"dev":[
+		"utils":{
+			"dev":[
 			"/public/assets/g/js/utils.js"
-		],
-		"prod":[
+			],
+			"prod":[
 			"/public/assets/g/js/utils.js"
-		]
-	},
+			]
+		},
 
-	"index":{
-		"dev":[
+		"index":{
+			"dev":[
 			"/public/assets/w/styles/index.css"
-		],
-		"prod":[
-			"/public/assets/w/styles/index.css"
-		]
-	},
+			],
+			"prod":[
+			"/public/assets/w/styles/index.min.css"
+			]
+		},
 
-	"home":{
-		"dev":[
+		"home":{
+			"dev":[
 			"/public/assets/w/styles/dashboard.css"
-		],
-		"prod":[
-			"/public/assets/w/styles/dashboard.css"
-		]
-	},
+			],
+			"prod":[
+			"/public/assets/w/styles/dashboard.min.css"
+			]
+		},
 
-	"admin":{
-		"dev":[
+		"admin":{
+			"dev":[
 			"/public/mods/admin/users/usersModule.js",
 			"/public/mods/admin/users/usersControllerMain.js",
 			"/public/mods/admin/users/usersRouter.js"
-		],
-		"prod":[
+			],
+			"prod":[
 			"/public/mods/admin/users/usersModule.js",
 			"/public/mods/admin/users/usersControllerMain.js",
 			"/public/mods/admin/users/usersRouter.js"
-		]
-	},
+			]
+		},
 
-	"dir-web":{
-		"dev":[
+		"dir-web":{
+			"dev":[
 			"/public/d/userProfile/script.js",
 			"/public/d/userDisplay/script.js",
 			"/public/d/user/script.js",
@@ -84,74 +84,105 @@ module.exports = {
 			"/public/d/autoComplete/script.js",
 			"/public/d/autoComplete/angucomplete-alt.js",
 			"/public/d/autoComplete/angucomplete-alter1.js"
-		],
-		"prod":[
-		]
-	},
+			],
+			"prod":[
+			"/public/d/userProfile/script.js",
+			"/public/d/userDisplay/script.js",
+			"/public/d/user/script.js",
+			"/public/d/fileUpload/script.js",
+			"/public/d/fileAttachment/script.js",
+			"/public/d/datePicker/script.js",
+			"/public/d/confirmDialog/script.js",
+			"/public/d/richText/script.js",
+			"/public/d/tooltipDirective/script.js",
+			"/public/d/autoComplete/script.js",
+			"/public/d/autoComplete/angucomplete-alt.js",
+			"/public/d/autoComplete/angucomplete-alter1.js"
+			]
+		},
 
-	"filters-web":{
-		"dev":[
+		"filters-web":{
+			"dev":[
 			"/public/f/date/script.js"
-		],
-		"prod":[
-		]
-	},
+			],
+			"prod":[
+			"/public/f/date/script.js"
+			]
+		},
 
-	"profile":{
-		"dev":[
+		"profile":{
+			"dev":[
 			"/public/mods/profile/profileModule.js",
 			"/public/mods/profile/profileControllerMain.js",
 			"/public/mods/profile/profileRouter.js"
-		],
-		"prod":[
-		]
-	},
+			],
+			"prod":[
+			"/public/mods/profile/profileModule.js",
+			"/public/mods/profile/profileControllerMain.js",
+			"/public/mods/profile/profileRouter.js"
+			]
+		},
 
-	"dir-mobile":{
-		"dev":[
+		"dir-mobile":{
+			"dev":[
 			"/public/d/userDisplay/script.js",
 			"/public/d/scroll/scroll.js",
 			"/public/d/header/header.js",
 			"/public/d/userView/script.js"
-		],
-		"prod":[
-		]
-	},
+			],
+			"prod":[
+			"/public/d/userDisplay/script.js",
+			"/public/d/scroll/scroll.js",
+			"/public/d/header/header.js",
+			"/public/d/userView/script.js"
+			]
+		},
 
-	"filters-mobile":{
-		"dev":[
+		"filters-mobile":{
+			"dev":[
 			"/public/f/date/script.js"
-		],
-		"prod":[
-		]
-	},
+			],
+			"prod":[
+			"/public/f/date/script.js"
+			]
+		},
 
-	"m-common":{
-		"dev":[
+		"m-common":{
+			"dev":[
 			"/public/assets/m/css/font.css",
 			"/public/assets/m/css/style.css"			
-		],
-		"prod":[
+			],
+			"prod":[
+			"/public/assets/m/css/font.min.css",
+			"/public/assets/m/css/style.min.css"	
+			]
 
-		]
+		},
 
-	},
-
-	"m-main":{
-		"dev":[
+		"m-main":{
+			"dev":[
 			"/public/m/home/home.js",
 			"/public/m/home/homeCtrl.js",
 			"/public/d/geoLocation/locator.js",
 			"/public/d/geoLocation/locator-tpl.js"
-		]
+			],
+			"prod":[
+			"/public/m/home/home.js",
+			"/public/m/home/homeCtrl.js",
+			"/public/d/geoLocation/locator.js",
+			"/public/d/geoLocation/locator-tpl.js"
+			]
 
-	},
+		},
 
-	"restApiConfig":{
-		"dev":[
-		"/public/assets/js/restApiConfig.js"
-		]
-	}	
+		"restApiConfig":{
+			"dev":[
+			"/public/assets/js/restApiConfig.js"
+			],
+			"prod":[
+			"/public/assets/js/restApiConfig.js"
+			]
+		}	
 
 	}
 
