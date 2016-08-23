@@ -36,8 +36,8 @@ profileApp.controller('profileControllerMain', ['$scope', '$http', 'growl', '$ro
 
 }])
 
-profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','$routeParams','Upload', '$timeout','$mdDialog','$mdMedia',
-  function($scope, $http, growl,$routeParams, Upload, $timeout,$mdDialog,$mdMedia) { 
+profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','$routeParams','Upload', '$timeout','$mdDialog','$mdMedia','API',
+  function($scope, $http, growl,$routeParams, Upload, $timeout,$mdDialog,$mdMedia,API) { 
       
       // users rest api constant
       var userApiEndPoint = API.baseUrl + API.usersEndPoint;

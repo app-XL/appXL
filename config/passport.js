@@ -18,7 +18,7 @@ module.exports = function(passport) {
 
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
-           user.set('groups', secure.getGroups(user),  { strict: false });
+           // user.set('groups', secure.getGroups(user),  { strict: false });
            done(err, user);
        });
     });

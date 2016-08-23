@@ -7,6 +7,7 @@ var constants               = require('../scripts/constants');
 
 var model                   = require(constants.paths.models +  '/user')
 var config            = require(path.join(constants.paths.config, '/config'));
+var system            = require(constants.paths.scripts + "/system");
 
 // Service method definition -- Begin
 var service = {};
@@ -30,6 +31,7 @@ function getAll(){
     model.find(function(err, list){
         if(err) {
             console.log(err);
+            system.error({err:err},'Error in Get All Users Api Service');
             deferred.reject(err);
         }
         else
@@ -46,6 +48,7 @@ function getOneById(id){
     .exec(function (err, item) {
         if(err) {
             console.log(err);
+            system.error({err:err},'Error in Get User By Id Service');
             deferred.reject(err);
         }
         else{
@@ -111,9 +114,11 @@ function updateById(id, data) {
     model.findByIdAndUpdate(id, data, function (err, doc) {
         if (err) {
             deferred.reject(err);
+            system.error({err:err},'Error in User Update By Id Api Service');            
         }
         else
             deferred.resolve(doc);
+            system.info({userId:doc._id,userEmail:doc.email},'User Data Updated');
     });
 
     return deferred.promise;
@@ -125,9 +130,11 @@ function deleteById(id) {
     model.findByIdAndRemove(id, function (err, doc) {
         if (err) {
             deferred.reject(err);
+            system.error({err:err},'Error in User Delete By Id Api Service');
         }
         else{
             deferred.resolve(doc);
+            system.info({userId:doc._id,userEmail:doc.email},'User Data Deleted');
         }
     });
 
