@@ -1,6 +1,8 @@
 {
   "auth": {
-    "secret": "top secret"
+    "ttl": "3600000",
+    "secret": "top secret",
+    "expires": "7"
   },
 
   "profile":{
@@ -19,16 +21,16 @@
     "secret": "session top secret"
   },
 
-	"assets":{
-		"mode": "prod"
-	},
+  "assets":{
+    "mode": "prod"
+  },
 
   "email": {
     "smtp-options":{
       "service": "gmail",
       "auth": {
-          "user": "xxx@gmail.com",
-          "pass": "xxxxx"
+        "user": "xxx@gmail.com",
+        "pass": "xxxxx"
       }
     },
     "send-mails": "false"

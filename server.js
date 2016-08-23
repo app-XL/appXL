@@ -40,6 +40,13 @@ if (app.get('env') === 'development') {
   app.locals.pretty = true;		//render html output with proper formating
 }
 
+if(config.get('env') === 'production') {
+  app.locals.pretty = true;
+}
+
+if(config.get('env') === 'test') {
+  app.locals.pretty = true;
+}
 app.use(expressLayouts);
 
 // required for passport

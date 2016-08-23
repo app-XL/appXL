@@ -44,6 +44,10 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.12",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-minify-html": "^2.1.0",
     "istanbul": "^0.4.4",
     "jasmine": "^2.4.1"
   }

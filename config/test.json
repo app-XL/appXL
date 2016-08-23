@@ -6,7 +6,7 @@
   },
 
   "profile":{
-    "default-pwd": "default"
+    "default-pwd": "test"
   },
 
   "api": {
@@ -22,7 +22,7 @@
   },
 
   "assets":{
-    "mode": "dev"
+    "mode": "prod"
   },
 
   "email": {
