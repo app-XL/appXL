@@ -42,7 +42,8 @@
     "moment-range": "2.2.0",
     "express-device": "0.4.2",
     "bunyan": "^1.8.1",
-    "bunyan-format": "^0.2.1"
+    "bunyan-format": "^0.2.1",
+    "grunt-build-control": "^0.7.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.12",
