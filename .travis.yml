@@ -1,21 +1,35 @@
 language: node_js
-node_js:
-  - "6"
-  - "6.1"
-
+node_js: "6"
   install:
     - npm install -g bower
     - npm install
     - bower install
+
+  services: # enable various services
+  - mongodb     # will start mongodb
 
 # whitelist
 branches:
   only:
     - master
     after_success: 'npm run coveralls'
-# services: # enable various services
-#   - mongodb     # will start mongodb
 
+    before_deploy:
+      - test $TRAVIS_TEST_RESULT = 0 \ # check that build passed successfully
+      && grunt \
+      && cd dist \
+      && cd $TRAVIS_BUILD_DIR \
+      && tar -zcvf appXL-$TRAVIS_BRANCH.tar.gz dist
 
+      deploy:
+        provider: heroku
+        api_key: 9d87b9a1-21fb-4180-8720-af73f1a43151
+        file: appXL-$TRAVIS_BRANCH.tar.gz
+        on:
+          condition: $BUILDCOMPLETE = true
+          repo: mnimmagari/appXL
+          all_branches: true
+          tags: true
 
-# script: npm start
+          notifications:
+            email: true
