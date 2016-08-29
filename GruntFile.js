@@ -70,62 +70,61 @@ copy: {
       //utils
       {src: ['public/libs/moment/moment.js'], dest: 'dist/public/libs/moment/moment.js'},
       {src: ['public/libs/moment-range/dist/moment-range.min.js'], dest: 'dist/public/libs/moment-range/dist/moment-range.min.js'},
-
-      ],
-    },
-    images: {
-      files: [{
-        expand: true,
-        cwd: 'public/',
-        src: ['**/*.jpg', '**/**/*.jpg','**/**/**/*.jpg','**/*.png', '**/**/*.png','**/**/**/*.png','!libs/**/*.jpg','!libs/*.jpg','!libs/**/**/*.jpg'],
-        dest: 'dist/public/'
-      }]
-    },
-    config: {
-      expand:true,
-      cwd: 'config/',
-      src: ['*.js','*.json'],
-      dest: 'dist/config/'
-    },
-    controllers: {
-      expand:true,
-      cwd: 'controllers/',
-      src: ['**/*.js','*.js'],
-      dest: 'dist/controllers/'
-    },
-    models: {
-      expand:true,
-      cwd: 'models/',
-      src: ['*.js'],
-      dest: 'dist/models/'
-    },
-    routes: {
-      expand:true,
-      cwd: 'routes/',
-      src: ['*.js'],
-      dest: 'dist/routes/'
-    },
-    scripts: {
-      expand:true,
-      cwd: 'scripts/',
-      src: ['*.js'],
-      dest: 'dist/scripts/'
-    },
-    services: {
-      expand:true,
-      cwd: 'services/',
-      src: ['*.js'],
-      dest: 'dist/services/'
-    },
-    
-    views: {
-      expand:true,
-      cwd: 'views/',
-      src: ['*.ejs', '**/*.ejs', '**/**/*.ejs','**/*.js'],
-      dest: 'dist/views/'
-    },
-    server: {src: ['server.js'], dest: 'dist/server.js'}
+      {src: ['server.js'], dest: 'dist/server.js'}
+      ]
   },
+  images: {
+    files: [{
+      expand: true,
+      cwd: 'public/',
+      src: ['**/*.jpg', '**/**/*.jpg','**/**/**/*.jpg','**/*.png', '**/**/*.png','**/**/**/*.png','!libs/**/*.jpg','!libs/*.jpg','!libs/**/**/*.jpg'],
+      dest: 'dist/public/'
+    }]
+  },
+  config: {
+    expand:true,
+    cwd: 'config/',
+    src: ['*.js','*.json'],
+    dest: 'dist/config/'
+  },
+  controllers: {
+    expand:true,
+    cwd: 'controllers/',
+    src: ['**/*.js','*.js'],
+    dest: 'dist/controllers/'
+  },
+  models: {
+    expand:true,
+    cwd: 'models/',
+    src: ['*.js'],
+    dest: 'dist/models/'
+  },
+  routes: {
+    expand:true,
+    cwd: 'routes/',
+    src: ['*.js'],
+    dest: 'dist/routes/'
+  },
+  scripts: {
+    expand:true,
+    cwd: 'scripts/',
+    src: ['*.js'],
+    dest: 'dist/scripts/'
+  },
+  services: {
+    expand:true,
+    cwd: 'services/',
+    src: ['*.js'],
+    dest: 'dist/services/'
+  },
+
+  views: {
+    expand:true,
+    cwd: 'views/',
+    src: ['*.ejs', '**/*.ejs', '**/**/*.ejs','**/*.js'],
+    dest: 'dist/views/'
+  }
+},
   cssmin: {
     build:{
       expand: true,
@@ -134,13 +133,39 @@ copy: {
       dest: 'dist/public/',
       ext: '.min.css'
     }
-    
-  }
-
-  });  //initconfig closed
+  },
+    mochaTest: {
+      options: {
+        reporter: 'spec'
+      },
+      src: ['test/*.js']
+    },
+    storeCoverage: {
+      options: {
+        thresholds: {
+          'statements': 10,
+          'branches': 10,
+          'lines': 10,
+          'functions': 10
+        },
+        dir: 'coverage/reports'
+      }
+    },
+    makeReport: {
+      src: 'coverage/reports/**/*.json',
+      options: {
+        type: 'lcov',
+        dir: 'coverage/reports',
+        print: 'detail'
+      }
+    }
+    });  //initconfig closed
 grunt.loadNpmTasks('grunt-minify-html');
 grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-cssmin');
+grunt.loadNpmTasks('grunt-istanbul');
+grunt.loadNpmTasks('grunt-mocha-test');
+grunt.registerTask('coverage', ['mochaTest','storeCoverage','makeReport']);
 grunt.registerTask('default',['copy','uglify','minifyHtml','cssmin']  );
 };

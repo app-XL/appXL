@@ -5,9 +5,7 @@
   "private": true,
   "siteTitle": "App-XLrater",
   "scripts": {
-    "start": "node server.js",
-    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/jasmine/bin/jasmine.js",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "~4.0.0",
@@ -46,12 +44,11 @@
     "grunt-build-control": "^0.7.1"
   },
   "devDependencies": {
-    "coveralls": "^2.11.12",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-uglify": "^2.0.0",
+    "grunt-istanbul": "^0.7.1",
     "grunt-minify-html": "^2.1.0",
-    "istanbul": "^0.4.4",
-    "jasmine": "^2.4.1"
+    "grunt-mocha-test": "^0.12.7"
   }
 }
