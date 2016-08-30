@@ -4,31 +4,28 @@ before_install:
 - npm install -g grunt-cli
 - npm install -g bower
 install:
-  - npm install
-  - bower install
-
-  branches:
+- npm install
+- bower install
+branches:
     only:
       - master
-
-      before_script: grunt coverage
-
-      before_deploy:
-      - test $TRAVIS_TEST_RESULT = 0 \ # check that build passed successfully
-      && grunt \
-      && cd dist \
-      && cd $TRAVIS_BUILD_DIR \
-      && tar -zcvf appXL-$TRAVIS_BRANCH.tar.gz dist
-
-      deploy:
-        provider: heroku
-        secret: b631b9b9-c51c-470a-9e76-df2512c5dd25
-        file: appXL-$TRAVIS_BRANCH.tar.gz
-        on:
-          condition: $BUILDCOMPLETE = true
-          repo: appXL/appXL
-          all_branches: true
-          tags: true
-
-          notifications:
-            email: true
+after_script: "grunt"
+before_deploy:
+- test $TRAVIS_TEST_RESULT = 0 \ # check that build passed successfully
+- cd dist \
+- cd $TRAVIS_BUILD_DIR \
+- tar -zcvf appXL-$TRAVIS_BRANCH.tar.gz dist
+deploy:
+provider: heroku
+api_key:
+secure: b631b9b9-c51c-470a-9e76-df2512c5dd25
+file: appXL-$TRAVIS_BRANCH.tar.gz
+on:
+condition: $BUILDCOMPLETE = true
+repo: appXL/appXL
+all_branches: true
+tags: true
+after_deploy:
+- npm start
+notifications:
+email: true
