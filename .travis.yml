@@ -1,5 +1,5 @@
 language: node_js
-node_js: "6"
+node_js: "0.12.7"
 before_install: 
 - npm install -g grunt-cli
 - npm install -g bower
@@ -26,6 +26,7 @@ repo: appXL/appXL
 all_branches: true
 tags: true
 after_deploy:
+- cd appXL
 - npm start
 notifications:
 email: true
